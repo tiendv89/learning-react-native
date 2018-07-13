@@ -15,7 +15,9 @@ export default class MaskView extends React.Component {
   };
 
   componentDidMount() {
-    this.resetAnimation();
+    this._navListener = this.props.navigation.addListener('didFocus', () => {
+      this.resetAnimation();
+    });
   }
 
   resetAnimation() {
@@ -85,7 +87,7 @@ export default class MaskView extends React.Component {
             <View style={styles.centeredFullScreen}>
               <Animated.Image
                 style={[styles.maskImageStyle, imageScale]}
-                source={require('./logo.png')}
+                source={require('../../logo.png')}
               />
             </View>
           }
